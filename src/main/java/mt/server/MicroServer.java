@@ -262,10 +262,17 @@ public class MicroServer implements MicroTraderServer {
 				}
 			}
 				
-			//Sell order less than 5 
+			if(orderCount < 5){
+				orders.add(o);
+				return true;
+			}else{
+
+				serverComm.sendError(o.getNickname(), "can't have more than five pending requests  ");
+			return false;
+			}
 
 		}
-		return true;
+		
 	}
 
 
