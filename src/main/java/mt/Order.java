@@ -138,32 +138,10 @@ public class Order implements Serializable {
 		return super.equals(obj);
 	}
 	
-	public boolean saveORder(Order o){
-		LOGGER.log(level.INFO, "Storing the new order" );
-		if(o.getNumberOfUnits()>=10){
-			Set<Order> orders = orderNap.get(o.getNickname());
-			int sellOrderCount = 0;
-			for(Order orderInList : orders){
-				if(orderInList.isSellOrder()){
-					sellOrderCount++;
-				}
-			}
-			
-			if(sellOrderCount < 5){
-				orders.add(0);
-				return true;
-			}else{
-				serverComm.sendError(o.getNickname(), "seller não pode ter mais do que 5 vendedores");
-				return false;
-			}
-			
-		}
-		serverComm.sendError(o.getNickname(), " A single order quatity (buy or sell order) can be lower than 10 units" );
-		return false;
-	}
+	
 			
 		
 	}
 	
 	
-}
+
