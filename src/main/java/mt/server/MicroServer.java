@@ -215,32 +215,24 @@ public class MicroServer implements MicroTraderServer {
 	 *            the message sent by the client
 	 */
 	private void processNewOrder(ServerSideMessage msg) throws ServerException {
-		LOGGER.log(Level.INFO, "Processing new order...");
-
-		Order o = msg.getOrder();
-
-		// save the order on map
-		saveOrder(o);
-
-		// if is buy order
-		if (o.isBuyOrder()) {
-			processBuy(msg.getOrder());
-		}
-
-		// if is sell order
-		if (o.isSellOrder()) {
-			processSell(msg.getOrder());
-		}
-
-		// notify clients of changed order
-		notifyClientsOfChangedOrders();
-
-		// remove all fulfilled orders
-		removeFulfilledOrders();
-
+		LOGGER(msg);
 		// reset the set of changed orders
 		updatedOrders = new HashSet<>();
 
+	}
+
+	private void LOGGER(ServerSideMessage msg) throws mt.exception.ServerException {
+		LOGGER.log(Level.INFO, "Processing new order...");
+		Order o = msg.getOrder();
+		saveOrder(o);
+		if (o.isBuyOrder()) {
+			processBuy(msg.getOrder());
+		}
+		if (o.isSellOrder()) {
+			processSell(msg.getOrder());
+		}
+		notifyClientsOfChangedOrders();
+		removeFulfilledOrders();
 	}
 
 	/**
