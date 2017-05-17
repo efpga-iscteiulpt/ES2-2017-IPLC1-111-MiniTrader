@@ -257,12 +257,12 @@ public class MicroServer implements MicroTraderServer {
 			return false;
 		}else{
 			//save order on map
-			int sellOrderCount = 0;
+			int orderCount = 0;
 			Set<Order> orders = orderMap.get(o.getNickname());
 
 			for(Order listOrder : orders){
 				if(listOrder.isSellOrder()){
-					sellOrderCount++;
+					orderCount++;
 				}
 				if(o.isBuyOrder() != listOrder.isBuyOrder() && o.getStock().equals(listOrder.getStock())){
 					serverComm.sendError(o.getNickname(), "You cant sell your own orders orders and vice versa");
