@@ -38,7 +38,7 @@ public class MicroServer implements MicroTraderServer {
 	public static final Logger LOGGER = Logger.getLogger(MicroServer.class.getName());
 
 	/**
-	 * Server communication
+	 * Server communicatioEclipse PDn
 	 */
 	private ServerComm serverComm;
 
