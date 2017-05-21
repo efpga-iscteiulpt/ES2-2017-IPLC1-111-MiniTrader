@@ -415,7 +415,7 @@ public class MicroServer implements MicroTraderServer {
 	 * Remove fulfilled orders
 	 */
 	private void removeFulfilledOrders() {
-		LOGGER.log(Level.INFO, "Removing fulfilled orders...");
+		LOGGER.log(Level.INFO, "Removing fufilled orders...");
 
 		// remove fulfilled orders
 		for (Entry<String, Set<Order>> entry : orderMap.entrySet()) {
