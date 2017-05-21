@@ -2,8 +2,10 @@ package mt.server;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
@@ -14,10 +16,13 @@ import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
 import javax.xml.parsers.DocumentBuilder;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
 import org.w3c.dom.Element;
+import org.xml.sax.SAXException;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -87,6 +92,13 @@ public class MicroServer implements MicroTraderServer {
 		orderMap = new HashMap<String, Set<Order>>();
 		updatedOrders = new HashSet<>();
 	}
+	
+
+
+
+	
+	
+	
 
 	@Override
 	public void start(ServerComm serverComm) {
@@ -283,6 +295,7 @@ public class MicroServer implements MicroTraderServer {
 	if(o.getNumberOfUnits()>=10){
 		Set<Order> orders = orderMap.get(o.getNickname());
 		orders.add(o);
+		orderToXML(o);
 		return true;
 		}
 	
@@ -291,6 +304,44 @@ public class MicroServer implements MicroTraderServer {
 	
 	
 	}
+	
+	private void orderToXML(Order o){
+		 try {	
+	         File inputFile = new File("MicroTraderPersistenceAS.xml");
+	         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+	         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+	         Document doc = dBuilder.parse(inputFile);
+	         doc.getDocumentElement().normalize();         
+	         NodeList nList = doc.getElementsByTagName("Order");
+	         
+	         // Create new element Order with attributes
+	         Element newElementOrder = doc.createElement("Order");
+	         newElementOrder.setAttribute("Id", ""+o.getServerOrderID());
+	         newElementOrder.setAttribute("Type", (o.isBuyOrder()? "Buy" : "Sell"));
+	         newElementOrder.setAttribute("Stock", o.getStock());
+	         newElementOrder.setAttribute("Units",""+ o.getNumberOfUnits());
+	         newElementOrder.setAttribute("Price",""+ o.getPricePerUnit());
+
+	         // Create new element Customer
+	         Element newElementCustomer = doc.createElement("Customer");
+
+	         newElementCustomer.setTextContent(o.getNickname()); 
+	         newElementOrder.appendChild(newElementCustomer);
+	         
+	         Node n = doc.getDocumentElement();
+	         n.appendChild(newElementOrder);
+
+	         // Save XML document
+	         System.out.println("Save XML document.");
+	         Transformer transformer = TransformerFactory.newInstance().newTransformer();
+	         transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+	         StreamResult result = new StreamResult(new FileOutputStream("MicroTraderPersistenceAS.xml"));
+	         DOMSource source = new DOMSource(doc);
+	         transformer.transform(source, result);
+	      } catch (Exception e) { e.printStackTrace(); }
+	   }
+	
+	
 	
 	
 	
@@ -356,51 +407,7 @@ public class MicroServer implements MicroTraderServer {
 		
 		updatedOrders.add(buyOrder);
 		updatedOrders.add(sellerOrder);
-		try{
-			File inputFile = new File("MicrotraderPersistence.xml");
-	        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-	        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-	        Document doc = dBuilder.parse(inputFile);
-	        doc.getDocumentElement().normalize();         
-	        NodeList nList = doc.getElementsByTagName("Order");
-	        Element newElement = doc.createElement("Order");
-	      
-	        // Create new element Customer
-	        Element newElementCustomer = doc.createElement("Client"); 
-	        
-	       
-			
-				newElement.setAttribute("Id", ""+sellerOrder.getServerOrderID());
-				newElement.setAttribute("Type", "Sell");
-				newElement.setAttribute("Stock", sellerOrder.getStock());
-				newElement.setAttribute("Units", ""+ sellerOrder.getNumberOfUnits());
-				newElement.setAttribute("Price", ""+sellerOrder.getPricePerUnit());
-				newElementCustomer.setTextContent(sellerOrder.getNickname());
-
-			
-				newElement.setAttribute("Id", ""+buyOrder.getServerOrderID());
-				newElement.setAttribute("Type", "Buy");
-				newElement.setAttribute("Stock", buyOrder.getStock());
-				newElement.setAttribute("Units", ""+ buyOrder.getNumberOfUnits());
-				newElement.setAttribute("Price", ""+buyOrder.getPricePerUnit());
-				newElementCustomer.setTextContent(buyOrder.getNickname());
-			
-			
-		        	newElement.appendChild(newElementCustomer);
-			     Node n = doc.getDocumentElement();
-			      n.appendChild(newElement);
-		         Transformer transformer = TransformerFactory.newInstance().newTransformer();
-		         transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-		         StreamResult result = new StreamResult(new FileOutputStream("MicroTraderPersistence.xml"));
-		         DOMSource source = new DOMSource(doc);
-		         transformer.transform(source, result);
-
-			
-	        
-			}
-			catch (Exception e) {
-				// TODO: handle exception
-			}
+		
 		}
 		
 	
