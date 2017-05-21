@@ -305,6 +305,7 @@ public class MicroServer implements MicroTraderServer {
 	
 	}
 	
+
 	private void orderToXML(Order o){
 		 try {	
 	         File inputFile = new File("MicroTraderPersistenceAS.xml");
