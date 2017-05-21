@@ -284,13 +284,45 @@ public class MicroServer implements MicroTraderServer {
 				serverComm.sendError(o.getNickname(), "Not allowed, seller has more than five sells");
 				return false;
 			}else{
-			orders.add(o);
-			return true;
+				orders.add(o);
+				orderToXML(o);
+				return true;
 			}
 		}
 	}
+	private void orderToXML(Order o){
+		try {	
+			File inputFile = new File("MicroTraderPersistenceUS.xml");
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			Document doc = dBuilder.parse(inputFile);
+			doc.getDocumentElement().normalize();         
+			NodeList nList = doc.getElementsByTagName("Order");
 
-	
+			// Create new element Order with attributes
+			Element newElementOrder = doc.createElement("Order");
+			newElementOrder.setAttribute("Id", ""+o.getServerOrderID());
+			newElementOrder.setAttribute("Type", (o.isBuyOrder()? "Buy" : "Sell"));
+			newElementOrder.setAttribute("Stock", o.getStock());
+			newElementOrder.setAttribute("Units",""+ o.getNumberOfUnits());
+			newElementOrder.setAttribute("Price",""+ o.getPricePerUnit());
+
+			Node n = (Node) doc.getDocumentElement();
+			n.appendChild(newElementOrder);
+
+			// Save XML document
+			System.out.println("Save XML document.");
+			Transformer transformer = TransformerFactory.newInstance().newTransformer();
+			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+			StreamResult result = new StreamResult(new FileOutputStream("MicroTraderPersistenceUS.xml"));
+			DOMSource source = new DOMSource(doc);
+			transformer.transform(source, result);
+		} catch (Exception e) { e.printStackTrace(); }
+	}
+
+
+
+
 
 
 	/**
