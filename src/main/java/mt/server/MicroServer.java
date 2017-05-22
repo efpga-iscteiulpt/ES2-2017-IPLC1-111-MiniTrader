@@ -15,6 +15,7 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.swing.JOptionPane;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.soap.Node;
@@ -45,7 +46,7 @@ import mt.filter.AnalyticsFilter;
 public class MicroServer implements MicroTraderServer {
 
 	public static void main(String[] args) {
-		ServerComm serverComm = new AnalyticsFilter(new ServerCommImpl());
+		ServerComm serverComm =new ServerCommImpl();//
 		MicroTraderServer server = new MicroServer();
 		server.start(serverComm);
 	}
@@ -118,10 +119,11 @@ public class MicroServer implements MicroTraderServer {
 					if(msg.getOrder().getServerOrderID() == EMPTY){
 						msg.getOrder().setServerOrderID(id++);
 					}
-					notifyAllClients(msg.getOrder());
-					processNewOrder(msg);
+					processNewOrder(msg);//
+					notifyAllClients(msg.getOrder());//
+				
 				} catch (ServerException e) {
-					serverComm.sendError(msg.getSenderNickname(), e.getMessage());
+					JOptionPane.showMessageDialog(null, e.getMessage());
 				}
 				break;
 			default:
@@ -265,12 +267,10 @@ public class MicroServer implements MicroTraderServer {
 	 * 			the order to be stored on map
 	 */
 
-	private boolean saveOrder(Order o) {
+	private void saveOrder(Order o) throws ServerException{
 		LOGGER.log(Level.INFO, "Storing the new order...");
 		if(o.getNumberOfUnits()<10){
-			serverComm.sendError(o.getNickname(),"Order lower then 10 units not allowed.");
-			return false;
-
+			throw new ServerException("Order lower then 10 units not allowed.");//
 		}
 		else{
 			Set<Order> orders = orderMap.get(o.getNickname());
@@ -280,13 +280,12 @@ public class MicroServer implements MicroTraderServer {
 					orderCount++;
 				}
 			}
-			if(orderCount > 5){
-				serverComm.sendError(o.getNickname(), "Not allowed, seller has more than five sells");
-				return false;
+			if(orderCount >= 5){
+				throw new ServerException("Not allowed, seller has more than five sells");//
 			}else{
 				orders.add(o);
 				orderToXML(o);
-				return true;
+				
 			}
 		}
 	}
