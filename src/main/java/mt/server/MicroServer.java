@@ -18,7 +18,6 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.soap.Node;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
@@ -27,6 +26,7 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import mt.Order;
@@ -285,39 +285,57 @@ public class MicroServer implements MicroTraderServer {
 			}else{
 				orders.add(o);
 				orderToXML(o);
-				
 			}
 		}
 	}
+	
 	private void orderToXML(Order o){
 		try {	
-			File inputFile = new File("MicroTraderPersistenceUS.xml");
-			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-			Document doc = dBuilder.parse(inputFile);
-			doc.getDocumentElement().normalize();         
-			NodeList nList = doc.getElementsByTagName("Order");
+				File inputFile = new File("MicroTraderPersistenceAS.xml");
+				Document doc;
+				if(!inputFile.exists()){
+					inputFile.createNewFile();
+					DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			        doc = dBuilder.newDocument();
+			        doc.appendChild(doc.createElement("XML"));
+				}else{
+					DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			        doc = dBuilder.parse(inputFile);
+			        doc.getDocumentElement().normalize();
+				}
+	        // NodeList nList = doc.getElementsByTagName("Order");
+	         
+	         // Create new element Order with attributes
+	         Element newElementOrder = doc.createElement("Order");
+	         newElementOrder.setAttribute("Id",Integer.toString(o.getServerOrderID()));
+	         newElementOrder.setAttribute("Type",(o.isBuyOrder()? "Buy" : "Sell"));
+	         newElementOrder.setAttribute("Stock", o.getStock());
+	         newElementOrder.setAttribute("Units", Integer.toString(o.getNumberOfUnits()));
+	         newElementOrder.setAttribute("Price",	Double.toString(o.getPricePerUnit()));
 
-			// Create new element Order with attributes
-			Element newElementOrder = doc.createElement("Order");
-			newElementOrder.setAttribute("Id", ""+o.getServerOrderID());
-			newElementOrder.setAttribute("Type", (o.isBuyOrder()? "Buy" : "Sell"));
-			newElementOrder.setAttribute("Stock", o.getStock());
-			newElementOrder.setAttribute("Units",""+ o.getNumberOfUnits());
-			newElementOrder.setAttribute("Price",""+ o.getPricePerUnit());
+	         // Create new element Customer
+	         Element newElementCustomer = doc.createElement("Customer");
 
-			Node n = (Node) doc.getDocumentElement();
-			n.appendChild(newElementOrder);
+	         newElementCustomer.setTextContent(o.getNickname()); 
+	         newElementOrder.appendChild(newElementCustomer);
+	         
+	         Node n = doc.getDocumentElement();
+	         n.appendChild(newElementOrder);
 
-			// Save XML document
-			System.out.println("Save XML document.");
-			Transformer transformer = TransformerFactory.newInstance().newTransformer();
-			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-			StreamResult result = new StreamResult(new FileOutputStream("MicroTraderPersistenceUS.xml"));
-			DOMSource source = new DOMSource(doc);
-			transformer.transform(source, result);
-		} catch (Exception e) { e.printStackTrace(); }
-	}
+	         // Save XML document
+	         System.out.println("Save XML document.");
+	         Transformer transformer = TransformerFactory.newInstance().newTransformer();
+	         transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+	         FileOutputStream stream = new FileOutputStream("MicroTraderPersistenceAS.xml");
+	         StreamResult result = new StreamResult(stream);
+	         DOMSource source = new DOMSource(doc);
+	         transformer.transform(source, result);
+	         stream.close();
+	      } catch (Exception e) { e.printStackTrace(); }
+	   }
+
 
 
 
