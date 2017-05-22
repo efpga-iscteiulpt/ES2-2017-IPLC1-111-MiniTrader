@@ -244,36 +244,30 @@ public class MicroServer implements MicroTraderServer {
 	 * 			the order to be stored on map
 	 * @throws ServerException 
 	 */
-	private void saveOrder(Order o) throws ServerException {
-		
+	private void saveOrder(Order o) throws ServerException{
 		LOGGER.log(Level.INFO, "Storing the new order...");
 		if(o.getNumberOfUnits()<10){
 			throw new ServerException("Order lower then 10 units not allowed.");
-		}else{
-			//save order on map
-			int orderCount = 0;
+		}
+		else{
 			Set<Order> orders = orderMap.get(o.getNickname());
-
-			for(Order listOrder : orders){
-				if(listOrder.isSellOrder()){
+			int orderCount =0;
+			for(Order orderList : orders){
+				if(orderList.isSellOrder()){
 					orderCount++;
 				}
-				if(o.isBuyOrder() != listOrder.isBuyOrder() && o.getStock().equals(listOrder.getStock())){
-					serverComm.sendError(o.getNickname(), "You cant sell your own orders orders and vice versa");
-
+				if(o.getStock().equals(orderList.getStock()) && o.isBuyOrder() != orderList.isBuyOrder()){
+					throw new ServerException("You can't to issue sell orders for your own buy orders and vice versa");
 				}
 			}
-				
-			if(orderCount < 5){
+			if(orderCount < 5 || o.isBuyOrder()){
 				orders.add(o);
 			}else{
-
 				throw new ServerException("Not allowed, seller has more than five sells");
 			}
-
 		}
-		
 	}
+
 
 
 	/**
