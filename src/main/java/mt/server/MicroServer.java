@@ -13,6 +13,8 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.swing.JOptionPane;
+
 import mt.Order;
 import mt.comm.ServerComm;
 import mt.comm.ServerSideMessage;
@@ -30,7 +32,7 @@ import mt.filter.AnalyticsFilter;
 public class MicroServer implements MicroTraderServer {
 
 	public static void main(String[] args) {
-		ServerComm serverComm = new AnalyticsFilter(new ServerCommImpl());
+		ServerComm serverComm =new ServerCommImpl();
 		MicroTraderServer server = new MicroServer();
 		server.start(serverComm);
 	}
@@ -103,10 +105,10 @@ public class MicroServer implements MicroTraderServer {
 					if(msg.getOrder().getServerOrderID() == EMPTY){
 						msg.getOrder().setServerOrderID(id++);
 					}
-					notifyAllClients(msg.getOrder());
 					processNewOrder(msg);
+					notifyAllClients(msg.getOrder());	
 				} catch (ServerException e) {
-					serverComm.sendError(msg.getSenderNickname(), e.getMessage());
+					JOptionPane.showMessageDialog(null, e.getMessage());
 				}
 				break;
 			default:
@@ -240,13 +242,13 @@ public class MicroServer implements MicroTraderServer {
 	 * 
 	 * @param o
 	 * 			the order to be stored on map
+	 * @throws ServerException 
 	 */
-	private boolean saveOrder(Order o) {
+	private void saveOrder(Order o) throws ServerException {
 		
 		LOGGER.log(Level.INFO, "Storing the new order...");
 		if(o.getNumberOfUnits()<10){
-			serverComm.sendError(o.getNickname(), " Can't have an order with less than 10units");
-			return false;
+			throw new ServerException("Order lower then 10 units not allowed.");
 		}else{
 			//save order on map
 			int orderCount = 0;
@@ -258,17 +260,15 @@ public class MicroServer implements MicroTraderServer {
 				}
 				if(o.isBuyOrder() != listOrder.isBuyOrder() && o.getStock().equals(listOrder.getStock())){
 					serverComm.sendError(o.getNickname(), "You cant sell your own orders orders and vice versa");
-					return false;
+
 				}
 			}
 				
 			if(orderCount < 5){
 				orders.add(o);
-				return true;
 			}else{
 
-				serverComm.sendError(o.getNickname(), "can't have more than five pending requests  ");
-			return false;
+				throw new ServerException("Not allowed, seller has more than five sells");
 			}
 
 		}
