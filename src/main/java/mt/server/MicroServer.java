@@ -291,7 +291,7 @@ public class MicroServer implements MicroTraderServer {
 	
 	private void orderToXML(Order o){
 		try {	
-				File inputFile = new File("MicroTraderPersistenceAS.xml");
+				File inputFile = new File("MicroTraderPersistenceUS.xml");
 				Document doc;
 				if(!inputFile.exists()){
 					inputFile.createNewFile();
@@ -328,7 +328,7 @@ public class MicroServer implements MicroTraderServer {
 	         System.out.println("Save XML document.");
 	         Transformer transformer = TransformerFactory.newInstance().newTransformer();
 	         transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-	         FileOutputStream stream = new FileOutputStream("MicroTraderPersistenceAS.xml");
+	         FileOutputStream stream = new FileOutputStream("MicroTraderPersistenceUS.xml");
 	         StreamResult result = new StreamResult(stream);
 	         DOMSource source = new DOMSource(doc);
 	         transformer.transform(source, result);
