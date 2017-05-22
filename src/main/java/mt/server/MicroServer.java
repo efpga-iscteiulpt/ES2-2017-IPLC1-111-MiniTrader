@@ -45,7 +45,7 @@ import mt.filter.AnalyticsFilter;
 public class MicroServer implements MicroTraderServer {
 
 	public static void main(String[] args) {
-		ServerComm serverComm = new AnalyticsFilter(new ServerCommImpl());
+		ServerComm serverComm =new ServerCommImpl();
 		MicroTraderServer server = new MicroServer();
 		server.start(serverComm);
 	}
@@ -118,8 +118,9 @@ public class MicroServer implements MicroTraderServer {
 					if(msg.getOrder().getServerOrderID() == EMPTY){
 						msg.getOrder().setServerOrderID(id++);
 					}
-					notifyAllClients(msg.getOrder());
 					processNewOrder(msg);
+					notifyAllClients(msg.getOrder());
+					
 				} catch (ServerException e) {
 					serverComm.sendError(msg.getSenderNickname(), e.getMessage());
 				}
@@ -265,7 +266,7 @@ public class MicroServer implements MicroTraderServer {
 	 * 			the order to be stored on map
 	 */
 
-	private boolean saveOrder(Order o) {
+	private void saveOrder(Order o) throws ServerException{
 		LOGGER.log(Level.INFO, "Storing the new order...");
 		
 		//save order on map
@@ -273,11 +274,11 @@ public class MicroServer implements MicroTraderServer {
 		Set<Order> orders = orderMap.get(o.getNickname());
 		orders.add(o);
 		orderToXML(o);
-		return true;
+		
 		}
 	
-	serverComm.sendError(o.getNickname(), "An order can't be lower than 10 units");
-	return false;
+	throw new ServerException( "An order can't be lower than 10 units");
+
 	
 	
 	}
