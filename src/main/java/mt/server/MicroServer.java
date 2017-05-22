@@ -15,6 +15,7 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.swing.JOptionPane;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.soap.Node;
@@ -122,7 +123,7 @@ public class MicroServer implements MicroTraderServer {
 					notifyAllClients(msg.getOrder());
 					
 				} catch (ServerException e) {
-					serverComm.sendError(msg.getSenderNickname(), e.getMessage());
+					JOptionPane.showMessageDialog(null,e.getMessage());
 				}
 				break;
 			default:
@@ -275,9 +276,8 @@ public class MicroServer implements MicroTraderServer {
 		orders.add(o);
 		orderToXML(o);
 		
-		}
-	
-	throw new ServerException( "An order can't be lower than 10 units");
+	}else
+			throw new ServerException( "An order can't be lower than 10 units");
 
 	
 	
@@ -295,11 +295,11 @@ public class MicroServer implements MicroTraderServer {
 	         
 	         // Create new element Order with attributes
 	         Element newElementOrder = doc.createElement("Order");
-	         newElementOrder.setAttribute("Id", ""+o.getServerOrderID());
-	         newElementOrder.setAttribute("Type", (o.isBuyOrder()? "Buy" : "Sell"));
+	         newElementOrder.setAttribute("Id",Integer.toString(o.getServerOrderID()));
+	         newElementOrder.setAttribute("Type",(o.isBuyOrder()? "Buy" : "Sell"));
 	         newElementOrder.setAttribute("Stock", o.getStock());
-	         newElementOrder.setAttribute("Units",""+ o.getNumberOfUnits());
-	         newElementOrder.setAttribute("Price",""+ o.getPricePerUnit());
+	         newElementOrder.setAttribute("Units", Integer.toString(o.getNumberOfUnits()));
+	         newElementOrder.setAttribute("Price",	Double.toString(o.getPricePerUnit()));
 
 	         // Create new element Customer
 	         Element newElementCustomer = doc.createElement("Customer");
@@ -314,9 +314,11 @@ public class MicroServer implements MicroTraderServer {
 	         System.out.println("Save XML document.");
 	         Transformer transformer = TransformerFactory.newInstance().newTransformer();
 	         transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-	         StreamResult result = new StreamResult(new FileOutputStream("MicroTraderPersistenceAS.xml"));
+	         FileOutputStream stream = new FileOutputStream("MicroTraderPersistenceAS.xml");
+	         StreamResult result = new StreamResult(stream);
 	         DOMSource source = new DOMSource(doc);
 	         transformer.transform(source, result);
+	         stream.close();
 	      } catch (Exception e) { e.printStackTrace(); }
 	   }
 
