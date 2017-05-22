@@ -5,4 +5,9 @@ https://www.youtube.com/watch?v=LvowmK2kxqk&feature=youtu.be
 
 
 
-Entrega Final:    https://youtu.be/b3ZvACGKQDg
+Entrega Final:   Download e AS:   https://youtu.be/9qcI7AHrhU8
+                US:   https://youtu.be/EPnyZzPsz_8
+                EU:   https://youtu.be/yGZ6E25zXrg
+               
+
+
