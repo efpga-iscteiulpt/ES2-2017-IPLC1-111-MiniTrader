@@ -1,3 +1,6 @@
-<?xml version="1.0", encoding="UTF-8", standalone="no"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <XML>
+<Order Id="1" Price="11.0" Stock="11" Type="Sell" Units="11">
+<Customer>asdad</Customer>
+</Order>
 </XML>
