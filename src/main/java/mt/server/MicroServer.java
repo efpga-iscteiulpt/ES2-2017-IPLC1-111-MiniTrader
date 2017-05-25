@@ -316,10 +316,10 @@ public class MicroServer implements MicroTraderServer {
 	         newElementOrder.setAttribute("Price",	Double.toString(o.getPricePerUnit()));
 
 	         // Create new element Customer
-	         Element newElementCustomer = doc.createElement("Customer");
+	      //   Element newElementCustomer = doc.createElement("Customer");
 
-	         newElementCustomer.setTextContent(o.getNickname()); 
-	         newElementOrder.appendChild(newElementCustomer);
+	        // newElementCustomer.setTextContent(o.getNickname()); 
+	        // newElementOrder.appendChild(newElementCustomer);
 	         
 	         Node n = doc.getDocumentElement();
 	         n.appendChild(newElementOrder);
