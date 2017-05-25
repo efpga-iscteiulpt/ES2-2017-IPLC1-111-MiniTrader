@@ -279,8 +279,9 @@ public class MicroServer implements MicroTraderServer {
 				if(orderList.isSellOrder()){
 					orderCount++;
 				}
-			}
-			if(orderCount >= 5){
+				
+			} 
+			if(orderCount >= 5 && o.isSellOrder()){
 				throw new ServerException("Not allowed, seller has more than five sells");//
 			}else{
 				orders.add(o);
