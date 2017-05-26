@@ -6,7 +6,7 @@ https://www.youtube.com/watch?v=LvowmK2kxqk&feature=youtu.be
 
 
 Entrega Final:   Download e AS:   https://youtu.be/9qcI7AHrhU8
-                US:   https://youtu.be/EPnyZzPsz_8
+                US:   https://www.youtube.com/watch?v=rFtKOiBbuMo&feature=youtu.be
                 EU:   https://youtu.be/yGZ6E25zXrg
                
 
