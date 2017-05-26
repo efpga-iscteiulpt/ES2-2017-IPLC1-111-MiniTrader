@@ -1,0 +1,195 @@
+src/main/java/mt/client/controller/Controller.java:19:	Each class should declare at least one constructor
+src/main/java/mt/client/controller/Controller.java:19:	The class 'Controller' has a Cyclomatic Complexity of 4 (Highest = 14).
+src/main/java/mt/client/controller/Controller.java:19:	The class 'Controller' has a Modified Cyclomatic Complexity of 4 (Highest = 13).
+src/main/java/mt/client/controller/Controller.java:19:	The class 'Controller' has a Standard Cyclomatic Complexity of 4 (Highest = 13).
+src/main/java/mt/client/controller/Controller.java:21:	Comment is too large: Too many lines
+src/main/java/mt/client/controller/Controller.java:34:	Parameter 'host' is not assigned and could be declared final
+src/main/java/mt/client/controller/Controller.java:34:	Parameter 'nickname' is not assigned and could be declared final
+src/main/java/mt/client/controller/Controller.java:36:	Potential violation of Law of Demeter (static property access)
+src/main/java/mt/client/controller/Controller.java:38:	A catch statement that catches an exception only to wrap it in a new instance of the same type of exception and throw it should be avoided
+src/main/java/mt/client/controller/Controller.java:39:	New exception is thrown in catch block, original stack trace may be lost
+src/main/java/mt/client/controller/Controller.java:41:	New exception is thrown in catch block, original stack trace may be lost
+src/main/java/mt/client/controller/Controller.java:53:	Potential violation of Law of Demeter (static property access)
+src/main/java/mt/client/controller/Controller.java:61:	Potential violation of Law of Demeter (static property access)
+src/main/java/mt/client/controller/Controller.java:79:	A method/constructor shouldnt explicitly throw java.lang.Exception
+src/main/java/mt/client/controller/Controller.java:79:	Parameter 'order' is not assigned and could be declared final
+src/main/java/mt/client/controller/Controller.java:80:	Potential violation of Law of Demeter (static property access)
+src/main/java/mt/client/controller/Controller.java:81:	Potential violation of Law of Demeter (static property access)
+src/main/java/mt/client/controller/Controller.java:87:	A method/constructor shouldnt explicitly throw java.lang.Exception
+src/main/java/mt/client/controller/Controller.java:87:	publicMethodCommentRequirement Required
+src/main/java/mt/client/controller/Controller.java:88:	Potential violation of Law of Demeter (static property access)
+src/main/java/mt/client/controller/Controller.java:109:	A method/constructor shouldnt explicitly throw java.lang.Exception
+src/main/java/mt/client/controller/Controller.java:109:	Found 'UR'-anomaly for variable 'order' (lines '109'-'121').
+src/main/java/mt/client/controller/Controller.java:109:	The method 'browseMessages' has a Cyclomatic Complexity of 14.
+src/main/java/mt/client/controller/Controller.java:109:	The method 'browseMessages' has a Modified Cyclomatic Complexity of 13.
+src/main/java/mt/client/controller/Controller.java:109:	The method 'browseMessages' has a Standard Cyclomatic Complexity of 13.
+src/main/java/mt/client/controller/Controller.java:110:	Potential violation of Law of Demeter (static property access)
+src/main/java/mt/client/controller/Controller.java:111:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/controller/Controller.java:111:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/controller/Controller.java:111:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/controller/Controller.java:112:	Local variable 'message' could be declared final
+src/main/java/mt/client/controller/Controller.java:112:	Potential violation of Law of Demeter (static property access)
+src/main/java/mt/client/controller/Controller.java:113:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/controller/Controller.java:113:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/controller/Controller.java:113:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/controller/Controller.java:117:	Potential violation of Law of Demeter (object not created locally)
+src/main/java/mt/client/controller/Controller.java:118:	Found 'DD'-anomaly for variable 'index' (lines '118'-'123').
+src/main/java/mt/client/controller/Controller.java:120:	Local variable 'order' could be declared final
+src/main/java/mt/client/controller/Controller.java:121:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/controller/Controller.java:121:	Potential violation of Law of Demeter (object not created locally)
+src/main/java/mt/client/controller/Controller.java:122:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/controller/Controller.java:122:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/controller/Controller.java:122:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/controller/Controller.java:123:	Found 'DD'-anomaly for variable 'index' (lines '123'-'123').
+src/main/java/mt/client/controller/Controller.java:123:	Potential violation of Law of Demeter (static property access)
+src/main/java/mt/client/controller/Controller.java:127:	Avoid if (x != y) ..; else ..;
+src/main/java/mt/client/controller/Controller.java:128:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/controller/Controller.java:128:	Potential violation of Law of Demeter (object not created locally)
+src/main/java/mt/client/controller/Controller.java:129:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/controller/Controller.java:129:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/controller/Controller.java:129:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/controller/Controller.java:130:	Potential violation of Law of Demeter (object not created locally)
+src/main/java/mt/client/controller/Controller.java:131:	Potential violation of Law of Demeter (static property access)
+src/main/java/mt/client/controller/Controller.java:133:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/controller/Controller.java:133:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/controller/Controller.java:133:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/controller/Controller.java:134:	Potential violation of Law of Demeter (object not created locally)
+src/main/java/mt/client/controller/Controller.java:135:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/controller/Controller.java:135:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/controller/Controller.java:135:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/controller/Controller.java:135:	Potential violation of Law of Demeter (object not created locally)
+src/main/java/mt/client/controller/Controller.java:135:	Potential violation of Law of Demeter (static property access)
+src/main/java/mt/client/controller/Controller.java:137:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/controller/Controller.java:137:	Potential violation of Law of Demeter (object not created locally)
+src/main/java/mt/client/controller/Controller.java:138:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/controller/Controller.java:138:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/controller/Controller.java:138:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/controller/Controller.java:138:	Potential violation of Law of Demeter (object not created locally)
+src/main/java/mt/client/controller/Controller.java:139:	Potential violation of Law of Demeter (object not created locally)
+src/main/java/mt/client/controller/Controller.java:139:	Potential violation of Law of Demeter (static property access)
+src/main/java/mt/client/controller/Controller.java:140:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/controller/Controller.java:140:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/controller/Controller.java:140:	Potential violation of Law of Demeter (object not created locally)
+src/main/java/mt/client/controller/Controller.java:141:	Potential violation of Law of Demeter (object not created locally)
+src/main/java/mt/client/controller/Controller.java:141:	Potential violation of Law of Demeter (static property access)
+src/main/java/mt/client/controller/Controller.java:144:	Potential violation of Law of Demeter (object not created locally)
+src/main/java/mt/client/controller/Controller.java:145:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/controller/Controller.java:145:	Potential violation of Law of Demeter (object not created locally)
+src/main/java/mt/client/controller/Controller.java:147:	Potential violation of Law of Demeter (object not created locally)
+src/main/java/mt/client/controller/Controller.java:148:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/controller/Controller.java:148:	Potential violation of Law of Demeter (object not created locally)
+src/main/java/mt/client/controller/Controller.java:149:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/controller/Controller.java:149:	Potential violation of Law of Demeter (object not created locally)
+src/main/java/mt/client/controller/Controller.java:151:	Potential violation of Law of Demeter (object not created locally)
+src/main/java/mt/client/controller/Controller.java:154:	Potential violation of Law of Demeter (object not created locally)
+src/test/java/mt/test/MicroServerTest.java:24:	Each class should declare at least one constructor
+src/test/java/mt/test/MicroServerTest.java:26:	Avoid variables with short names like ms
+src/test/java/mt/test/MicroServerTest.java:26:	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/test/java/mt/test/MicroServerTest.java:26:	fieldCommentRequirement Required
+src/test/java/mt/test/MicroServerTest.java:29:	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/test/java/mt/test/MicroServerTest.java:29:	fieldCommentRequirement Required
+src/test/java/mt/test/MicroServerTest.java:32:	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/test/java/mt/test/MicroServerTest.java:32:	fieldCommentRequirement Required
+src/test/java/mt/test/MicroServerTest.java:35:	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/test/java/mt/test/MicroServerTest.java:35:	fieldCommentRequirement Required
+src/test/java/mt/test/MicroServerTest.java:38:	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/test/java/mt/test/MicroServerTest.java:38:	fieldCommentRequirement Required
+src/test/java/mt/test/MicroServerTest.java:41:	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/test/java/mt/test/MicroServerTest.java:41:	fieldCommentRequirement Required
+src/test/java/mt/test/MicroServerTest.java:44:	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/test/java/mt/test/MicroServerTest.java:44:	fieldCommentRequirement Required
+src/test/java/mt/test/MicroServerTest.java:47:	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/test/java/mt/test/MicroServerTest.java:47:	fieldCommentRequirement Required
+src/test/java/mt/test/MicroServerTest.java:50:	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/test/java/mt/test/MicroServerTest.java:50:	fieldCommentRequirement Required
+src/test/java/mt/test/MicroServerTest.java:53:	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/test/java/mt/test/MicroServerTest.java:53:	fieldCommentRequirement Required
+src/test/java/mt/test/MicroServerTest.java:56:	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/test/java/mt/test/MicroServerTest.java:56:	fieldCommentRequirement Required
+src/test/java/mt/test/MicroServerTest.java:59:	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/test/java/mt/test/MicroServerTest.java:59:	fieldCommentRequirement Required
+src/test/java/mt/test/MicroServerTest.java:62:	Avoid unused private fields such as 'msg11'.
+src/test/java/mt/test/MicroServerTest.java:62:	fieldCommentRequirement Required
+src/test/java/mt/test/MicroServerTest.java:65:	You may have misspelled a JUnit framework method (setUp or tearDown)
+src/test/java/mt/test/MicroServerTest.java:65:	publicMethodCommentRequirement Required
+src/test/java/mt/test/MicroServerTest.java:68:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:69:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:70:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:70:	The String literal "userA" appears 10 times in this file; the first occurrence is on line 70
+src/test/java/mt/test/MicroServerTest.java:72:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:73:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:73:	The String literal "MSFT" appears 5 times in this file; the first occurrence is on line 73
+src/test/java/mt/test/MicroServerTest.java:74:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:76:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:77:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:78:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:78:	The String literal "userB" appears 11 times in this file; the first occurrence is on line 78
+src/test/java/mt/test/MicroServerTest.java:80:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:81:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:82:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:84:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:85:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:86:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:88:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:89:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:90:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:92:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:93:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:94:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:96:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:97:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:98:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:100:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:101:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:102:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:104:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:105:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:106:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:112:	publicMethodCommentRequirement Required
+src/test/java/mt/test/MicroServerTest.java:113:	Assigning an Object to null is a code smell.  Consider refactoring.
+src/test/java/mt/test/MicroServerTest.java:114:	Assigning an Object to null is a code smell.  Consider refactoring.
+src/test/java/mt/test/MicroServerTest.java:118:	publicMethodCommentRequirement Required
+src/test/java/mt/test/MicroServerTest.java:119:	Assigning an Object to null is a code smell.  Consider refactoring.
+src/test/java/mt/test/MicroServerTest.java:125:	publicMethodCommentRequirement Required
+src/test/java/mt/test/MicroServerTest.java:126:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:126:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:126:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:126:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:126:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:126:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:126:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:130:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:131:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:135:	publicMethodCommentRequirement Required
+src/test/java/mt/test/MicroServerTest.java:136:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:136:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:140:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:144:	publicMethodCommentRequirement Required
+src/test/java/mt/test/MicroServerTest.java:145:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:145:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:149:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:154:	Comment is too large: Line too long
+src/test/java/mt/test/MicroServerTest.java:158:	Comment is too large: Line too long
+src/test/java/mt/test/MicroServerTest.java:162:	publicMethodCommentRequirement Required
+src/test/java/mt/test/MicroServerTest.java:163:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:163:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:163:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:163:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:163:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:166:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:171:	publicMethodCommentRequirement Required
+src/test/java/mt/test/MicroServerTest.java:172:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:172:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:172:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:172:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:172:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:172:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:172:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:175:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:179:	publicMethodCommentRequirement Required
+src/test/java/mt/test/MicroServerTest.java:180:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:180:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:180:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:183:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/mt/test/MicroServerTest.java:188:	Comment is too large: Line too long
+src/test/java/mt/test/MicroServerTest.java:191:	Comment is too large: Line too long
